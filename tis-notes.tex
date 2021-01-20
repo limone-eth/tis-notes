@@ -90,7 +90,7 @@ In particular we are interested in:
 	\end{itemize}
 \end{itemize}
 \subsubsection{Heterogeneity}
-Heterogeneity dervies from various forms of AUTONOMY.
+Heterogeneity derives from various forms of AUTONOMY.
 \begin{itemize}
 	\item \textbf{Design} (representation) autonomy: design a dataset in different ways w.r.t. to others
 	\item \textbf{Communication} (querying) autonomy: way in which we query the data
@@ -186,7 +186,7 @@ Designing data integration in the Multidatabase (with a unique data model):
 There are two approaches for schema mapping:
 \begin{itemize}
 	\item \textbf{GAV} (Global As View): the global schema is derived from the integration process of the data source schemata, thus the global schema is expressed in terms of the data source schemata. This approach is appropriate for stable data sources, it is in fact difficult to extend with a new data source. Mapping quality depends on how well we have compiled the sources into the global schema through the mapping. Whenever a source changes or a new one is added, the global schema needs to be reconsidered.
-	\item \textbf{LAV} (Local As View): the global schema is designed independently of the data source schemata. The relationship (mapping) between sources and global schema is obtained by defining for each data source a view over the global schema. This approach is appropriate if the global schema is stable, and it favors extensibility. By the way, query processing is much more complex. Mapping quality depends on how well we have characterized the sources. 
+	\item \textbf{LAV} (Local As View): the global schema is designed independently of the data source schemata. The relationship (mapping) between sources and global schema is obtained by defining for each data source as a view over the global schema. This approach is appropriate if the global schema is stable, and it favors extensibility. By the way, query processing is much more complex. Mapping quality depends on how well we have characterized the sources. 
 \end{itemize}
 A third approach is the union of the previous two:
 \begin{itemize}
@@ -278,7 +278,7 @@ We would like to:
 	\item query
 	\item compare
 \end{itemize}
-data with different structures also with semistructured data, just if they were all structured. An overall data representation should be progressively built, as we discover and explore new information sources. \nline
+data with different structures also with semistructured data, as if they were all structured. An overall data representation should be progressively built, as we discover and explore new information sources. \nline
 \subsection{Mediators}
 A \textbf{mediator} has the same purpose as the integration systems. Mediators are interfaces specialized in a certain domain which stand between application and wrappers. They accept queries written in the application’s language, decompose them and send them to each specific wrapper. They also send the responses back to the application, providing a unified vision of data.
 \\
@@ -330,7 +330,7 @@ N.B. An ER diagram, a class diagram, any conceptual schema is an ontology. \nlin
 
 \textbf{Ontology Types}:
 \begin{itemize}
-	\item \textbf{Taxonomic ontologies}: definition of concepts through terms, their hierarchical organization, an additional (predefined) relationships
+	\item \textbf{Taxonomic ontologies}: definition of concepts through terms, their hierarchical organization, and additional (predefined) relationships
 	\item \textbf{Descriptive ontologies}: definition of concepts for alignment of existing data structures or to design new specialized ontologies (domain ontologies). Descriptive ontologies require rich models to enable representations close to human perception.
 \end{itemize}
 
@@ -358,7 +358,7 @@ OWL is the first level above RDF. It is an ontology language that can formally d
 \begin{itemize}
 	\item \textbf{XML}: provides a syntax for structured documents, but imposes no semantic constraints on the meaning of these documents.
 	\item \textbf{XML Schema}: is a language for restricting the structure of XML documents and also extends XML with data types.
-	\item \textbf{RDF}: is a data model for objects (resources) and relations between them, provides a simple semantics for this data model, and can be represented in an XML syntax.
+	\item \textbf{RDF}: is a data model for objects (resources) and relations between them, provides a simple semantic for this data model, and can be represented in an XML syntax.
 	\item \textbf{RDF Schema}: is a vocabulary for describing properties and classes of RDF resources
 \end{itemize}
 \textbf{OWL} adds more vocabulary for describing properties and classes. The OWL (Web Ontology Language) is designed for use by applications that need to process the content of information instead of just presenting information to humans. It facilitates greater machine interpretability of Web content than that supported by XML, RDF and RDF Schema by providing additional vocabulary along with a formal semantics.\\
@@ -471,7 +471,7 @@ Sometimes knowing where the data have come from and how they were produced is cr
 \uline{Two viewpoints on Provenance}:
 \begin{itemize}
 	\item \textbf{Provenance as annotations on data}: models provenance as a series of annotations describing how each data item was produced. These annotations can be associated with tuples or values
-	\item \textbf{Provenance as a graph of data relationships}: models provenance ad a graph, with tuples as vertices. Each possible direct derivation of a tuple from a set of source tuples is a edge-connecting the source and derived tuples.
+	\item \textbf{Provenance as a graph of data relationships}: models provenance as a graph, with tuples as vertices. Each possible direct derivation of a tuple from a set of source tuples is a edge-connecting the source and derived tuples.
 \end{itemize}
 \subsection{Building Large-Scale Structured Web Databases}
 Develop methodologies for designing a fully integrated database coming from heterogeneous data sources.
@@ -489,7 +489,7 @@ It is an application that integrates two or more mashup components at any of the
 \uline{Key elements}:
 \begin{itemize}
 	\item \textbf{Mashup component}: is any piece of data, application logic and/or user interface that can be reused and that is accessible either locally or remotely (e.g., Craiglist and GoogleMaps)
-	\item \textbf{Mashup logic}: in the internal logic of operation of a mashup; it specifies the invocation of components, the control flow, the data flow, the data transformations and the UI of the mashup.
+	\item \textbf{Mashup logic}: is the internal logic of operation of a mashup; it specifies the invocation of components, the control flow, the data flow, the data transformations and the UI of the mashup.
 \end{itemize}
 Mashups introduce integration at the presentation layer and typically focus on non-mission-critical applications. 
 \myparagraph{Benefits and Problems}
@@ -555,7 +555,7 @@ Users should be able to query any data item regardless of its format or data mod
 	\item Data mining may help scientists in classifying and segmenting data
 \end{itemize}
 \subsection{Data Exploration}
-\textbf{Data Exploration ss a preliminary exploration of the data to better understand its characteristics.}\\ The key motivations of data exploration include:
+\textbf{Data Exploration is a preliminary exploration of the data to better understand its characteristics.}\\ The key motivations of data exploration include:
 \begin{itemize}
 	\item helping to select right tool for preprocessing or analysis
 	 \item Making use of humans abilities to recognize patterns
@@ -616,7 +616,7 @@ The Data Mining Tasks are:
 		\item the \uline{support} is a fraction of transactions that contain an item set (e.g., 2/5)
 		\item the \uline{frequent itemset} is an item whose support is greater than or equal to a minsup threshold.
 	\end{itemize}	 
-	\item \textbf{Association Rule} An implication expression of the form X —> Y, where X and Y are itemsets.
+	\item \textbf{Association Rule} An implication expression of the form X $\rightarrow$ Y, where X and Y are itemsets.
 	\item \textbf{Association Rule Discovery} (descriptive): given a set of records each of which contains some number of items from a given collection, produce dependency rules which will predict occurrence of an item based on occurrences of other item. (e.g., If a customer buys diaper and milk, then she is very likely to buy beer). (Examples: marketing and sales promotions).
 	\item \textbf{Sequential pattern discovery} (descriptive): 
 	\begin{itemize}
