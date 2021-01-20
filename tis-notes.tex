@@ -183,10 +183,10 @@ Designing data integration in the Multidatabase (with a unique data model):
 	\item \textbf{Key conflicts}: two same entities have two different keys (e.g. in a source the person is identified by the SSN and in another source it is identified through the email address).
 \end{itemize}
 \subsection{Mapping between the Global Logical Schema and the Single Source Schemata (logical view definition)}
-There are two approaches:
+There are two approaches for schema mapping:
 \begin{itemize}
 	\item \textbf{GAV} (Global As View): the global schema is derived from the integration process of the data source schemata, thus the global schema is expressed in terms of the data source schemata. This approach is appropriate for stable data sources, it is in fact difficult to extend with a new data source. Mapping quality depends on how well we have compiled the sources into the global schema through the mapping. Whenever a source changes or a new one is added, the global schema needs to be reconsidered.
-	\item \textbf{LAV} (Local As View): the global schema is designed independently of the data source schemata. The relationship (mapping) between sources and global schema is obtained by defining each data source ad a view over the global schema. This approach is appropriate if the global schema is stable, and it favors extensibility. By the way, query processing is much more complex. Mapping quality depends on how well we have characterized the sources. 
+	\item \textbf{LAV} (Local As View): the global schema is designed independently of the data source schemata. The relationship (mapping) between sources and global schema is obtained by defining for each data source a view over the global schema. This approach is appropriate if the global schema is stable, and it favors extensibility. By the way, query processing is much more complex. Mapping quality depends on how well we have characterized the sources. 
 \end{itemize}
 A third approach is the union of the previous two:
 \begin{itemize}
@@ -200,7 +200,7 @@ The most useful integration operators to write relational GAV views are:
 	\item \textbf{generalization}: we keep only common attributes
 \end{itemize}
 A mapping defined over some data source is \textbf{SOUND} when it provides a subset of the data that is available in the data source that corresponds to the definition. \\
-A mapping is \textbf{COMPLETE} it it provides a superset of the available data in the data source that corresponds to the definition. \\
+A mapping is \textbf{COMPLETE} if it provides a superset of the available data in the data source that corresponds to the definition. \\
 A mapping is \textbf{EXACT} if it provides all and only data corresponding to the definition: it is both sound and complete. \\
 With the GAV approach, the mapping can be exact or only sound. \\
 With the LAV approach, the mapping can be exact or only complete, due to the incompleteness of one or more sources (they do not cover the data “expected” from the global schema, which has been defined independently of the source contents).
@@ -223,6 +223,7 @@ Considering the case of a relational database (the most common), several techniq
 		\begin{itemize}
 			\item \textit{edit-distance}: based on the minimal number of operations that are needed to transform string a to string b
 \end{itemize}
+		\pagebreak
 		\item Set-based:
 		\begin{itemize}
 			\item \textit{Jaccard}: divide the strings into tokens, and compute the measure on the two sets of tokens (intersection divided by union of tokens)
@@ -287,7 +288,6 @@ The term \uline{mediation} includes:
 	\item the \textbf{knowledge structures} that drive the transformations needed to transform data to information
 	\item any \textbf{intermediate storage} that is needed
 \end{itemize}
-Mediators are interfaces specialized in a certain domain which stand between application and wrappers. It accepts queries written in the application’s language, decompose them and send them to each specific wrapper. It also send the responses back to the application, providing a unified vision of data.
 \subsubsection{Tsimmis}
 \textbf{TSIMMIS} is the first system based on the mediator/wrapper paradigm, proposed in the 90’s at Stanford. \\ 
 In this system:
@@ -298,7 +298,7 @@ In this system:
 	\item query posed to the mediator
 	\item mediator knows the semantics of the application domain
 \end{itemize}
-Each mediator is specialized into a certain domain. Thus, each mediator must know domain metadata which convey the data semantics. If data source changes a little, the wrapper has to be modified $\rightarrow$ automatic wrapper generation
+Each mediator is specialized into a certain domain. Thus, each mediator must know domain metadata which convey the data semantics. If data source changes a little, the wrapper has to be modified $\rightarrow$ automatic wrapper generation. \\
 In TSIMMIS, queries are posed to the mediators in an object-oriented language \textbf{LOREL} (Lightweight Object REpository Language). The data model adopted is OEM (Object Exchange Model), a graph-based and self-descriptive model, and it represents directly data with no schema at all.
 \subsection{Ontologies}
 \subsubsection{Problem in information extraction from HTML docs}
@@ -395,7 +395,7 @@ How should we improve database conceptual models to fulfill ontology requirement
 Problems:
 \begin{itemize}
 	\item \uline{Discovery of equivalent concepts (mapping)}: what does equivalent mean? (we look for some kind of similarity)
-	\item \uline{Formal representation of these mappings}: how are these mapping represented
+	\item \uline{Formal representation of these mappings}: how are these mapping represented?
 	\item \uline{Reasoning of these mappings}: how do we use the mappings within our reasoning and query-answering process?
 \end{itemize}
 \textbf{Ontology matching} is the process of finding pairs of resources coming from different ontologies which can be considered equal in meaning. We need some kind of \textit{similarity measure}, this time taking into account also semantics (i.e., not only the structure of words). \\
@@ -403,7 +403,7 @@ As already seen, similarity is strictly related to \uline{distance}.
 Three main categories:
 \begin{itemize}
 	\item Metric (distance)-based measures
-	\item Set-theretic based measures
+	\item Set-theoretic based measures
 	\item Implicators based measures
 \end{itemize}
 \textbf{Ontology mapping} is the process of relating similar concepts or relations of two or more information sources using equivalence relations or order relations.
@@ -415,7 +415,7 @@ Three main categories:
 	\item \uline{Paradigm}: different paradigms can be used to represent concepts such as time (e.g., temporal representations $\rightarrow$ continuous interval vs. discrete sets of time points
 	\item \uline{Encoding}
 	\item \uline{Concept description}: a distinction between two classes can be modeled using a qualifying attribute or by introducing a separate class, or the way in which is-a hierarchy is built.
-	\item Homonyms and Synonyms
+	\item \uline{Homonyms and Synonyms}
 \end{itemize}
 \pagebreak
 \subsubsection{How can ontologies support integration?}
