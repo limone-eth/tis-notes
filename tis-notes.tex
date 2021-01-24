@@ -55,7 +55,7 @@ Released with Beerware License, Rev. 42 (https://spdx.org/licenses/Beerware.html
 \clearpage
 \section{Data Integration}
 \subsection{Introduction}
-\textbf{Data Integration is the problem of combining data coming from different data sources}, providing the user with a unified vision of the data, detecting correspondences between similar concepts that come from different sources, and conflicting solving. 
+\textbf{Data Integration is the problem of combining data coming from different data sources}, providing the user with a unified vision of the data, detecting correspondences between similar concepts that come from different sources, and solving possible conflicts. 
 \nline
 The aim of Data Integration is to set up a system where it is possible to query different data sources as if they were a unique one (through a global schema).
 \subsubsection{Interoperability}
@@ -69,7 +69,7 @@ Data integration is needed because of a need for interoperability among SW appli
 \begin{itemize}
 	\item \textbf{Volume} (data at scale): not only can each data source contain a \uline{huge volume of data}, but also the number of data sources has grown to be in the millions.
 	\item \textbf{Velocity} (data in motion): as a direct consequence of the \uline{rate} at which data is being collected and continuously made available, many of the data sources are very dynamic.
-	\item \textbf{Variety} (data in many form) data sources (even in the same domain) are extremely \textit{heterogeneous} both at:
+	\item \textbf{Variety} (data in many form): data sources (even in the same domain) are extremely \textit{heterogeneous} both at:
 	\begin{itemize}
 		\item the \uline{schema level}, regarding how they structure their data, 
 		\item and at the \uline{instance level}, regarding how they describe the same real world entity
@@ -142,12 +142,12 @@ There are \uline{two relevant ways of integrating database systems}:
 \end{figure}
 \raggedright
 \myparagraph{Materialized Integration}
-Large common stores came to be know as \textbf{warehouses}, and the software to access, scrape, transform, and load data into warehouses, became known as \uline{extract, transform, and load (ETL)} systems. \\ In a dynamic environment, one must perform ETL periodically (e.g., once a day or once a week), thereby building up a history of the enterprise. \textbf{The main purpose of a data warehouse is to allow systematic or ad-hoc data analysis and mining.} Indeed, warehouses are not appropriate when need to integrate the operational systems (keeping data up-to-date).
+Large common stores came to be known as \textbf{warehouses}, and the software to access, scrape, transform, and load data into warehouses, became known as \uline{extract, transform, and load (ETL)} systems. \\ In a dynamic environment, one must perform ETL periodically (e.g., once a day or once a week), thereby building up a history of the enterprise. \textbf{The main purpose of a data warehouse is to allow systematic or ad-hoc data analysis and mining.} Indeed, warehouses are not appropriate when need to integrate the operational systems (keeping data up-to-date).
 \myparagraph{Virtual Integration}
 The \textbf{virtual integration approach leaves the information requested in the local sources.} The virtual approach will always return a fresh answer to the query. The query posted to the global schema is reformulated into the formats of the local information system. The information retrieved needs to be combined to answer the query.
 \myparagraph{Rationale}
 The conventional wisdom is to use data warehousing and ETL products to perform data integration. However, there is a serious flaw in one aspect of this wisdom. \nline
-Suppose one wants to integrate current (operational) data rather than historical information. Consider, for example, an e-commerce web site which wishes to sell hotel rooms over the web. The actual inventory of available hotel rooms exists in 100 or so information systems since Hilton, Hyatt, and Marriot all run their own reservation systems.\\ Applying ETL and warehouses to this problem will create a copy of hotel availability data, which is quickly out of data. \uline{If a website sells a hotel room, based on this data, it has no way of guaranteeing delivery of the room, because somebody else may have sold the room in the meantime.}
+Suppose one wants to integrate current (operational) data rather than historical information. Consider, for example, an e-commerce web site which wishes to sell hotel rooms over the web. The actual inventory of available hotel rooms exists in 100 or so information systems since Hilton, Hyatt, and Marriot all run their own reservation systems.\\ Applying ETL and warehouses to this problem will create a copy of hotel availability data, which is quickly out of date. \uline{If a website sells a hotel room, based on this data, it has no way of guaranteeing delivery of the room, because somebody else may have sold the room in the meantime.}
 \subsubsection{Design Steps for Data Integration}
 Data integration problems arise even in the simplest situation, that is with a unique, centralized database. \\
 \textbf{UNIQUE DB}: each datum, whatever application uses it, must only appear once. This eliminates useless redundancies which would cause inconsistencies and useless memory occupation. \nline
@@ -186,7 +186,7 @@ Designing data integration in the Multidatabase (with a unique data model):
 There are two approaches for schema mapping:
 \begin{itemize}
 	\item \textbf{GAV} (Global As View): the global schema is derived from the integration process of the data source schemata, thus the global schema is expressed in terms of the data source schemata. This approach is appropriate for stable data sources, it is in fact difficult to extend with a new data source. Mapping quality depends on how well we have compiled the sources into the global schema through the mapping. Whenever a source changes or a new one is added, the global schema needs to be reconsidered.
-	\item \textbf{LAV} (Local As View): the global schema is designed independently of the data source schemata. The relationship (mapping) between sources and global schema is obtained by defining for each data source as a view over the global schema. This approach is appropriate if the global schema is stable, and it favors extensibility. By the way, query processing is much more complex. Mapping quality depends on how well we have characterized the sources. 
+	\item \textbf{LAV} (Local As View): the global schema is designed independently of the data source schemata. The relationship (mapping) between sources and global schema is obtained by defining each data source as a view over the global schema. This approach is appropriate if the global schema is stable, and it favors extensibility. By the way, query processing is much more complex. Mapping quality depends on how well we have characterized the sources. 
 \end{itemize}
 A third approach is the union of the previous two:
 \begin{itemize}
@@ -253,7 +253,7 @@ Inconsistency may depend on different reasons:
 	\item Often the correct value may be obtained as a function of the original ones
 \end{itemize}
 \subsection{Data Model Heterogeneity}
-Wrappers are elements that convert queries into queries/commands which are understandable for the specific data source. They convert query results from the source format to a format which is understandable for the application.
+\textbf{Wrappers} are elements that convert queries into queries/commands which are understandable for the specific data source. They convert query results from the source format to a format which is understandable for the application.
  \nline
  Design steps for data integration (data model heterogeneity):
 \begin{enumerate}
@@ -476,7 +476,7 @@ Sometimes knowing where the data have come from and how they were produced is cr
 \subsection{Building Large-Scale Structured Web Databases}
 Develop methodologies for designing a fully integrated database coming from heterogeneous data sources.
 \subsubsection{Lightweight Integration}
-We may need to integrate data from multiple sources to answer a question asked once or twice. The integration must to be done quickly and by people without technical expertise.
+We may need to integrate data from multiple sources to answer a question asked once or twice. The integration must be done quickly and by people without technical expertise.
 \\ Problems typical of lightweight data integration:
 \begin{itemize}
 	\item Locating relevant data sources
@@ -694,7 +694,7 @@ Where is a DW useful?
 	\item Telecommunications: call flow analysis
 	\item Healthcare structures: patients’ ingoing and outgoing flows, cost analysis.
 \end{itemize}
-A Data Warehouse is divided in Data Marts. Indeed a \textbf{Data Mart} is a structure used to retrieve data from the DW. It is a subset of the data warehouse and is usually oriented to a specific business area. \nline
+A Data Warehouse is divided in Data Marts. Indeed a \textbf{Data Mart} is a structure used to retrieve data from the DW. It is a subset of the data warehouse and is usually oriented to a specific business area.
 \subsubsection{Evolution of Data Warehouses}
 \begin{itemize}
 	\item \textbf{Offline DW}: periodically updated from data in the operational systems and the DW data are stored in a data structure designed to facilitate reporting
@@ -758,7 +758,7 @@ The components of a fact schema are:
 		\item \uline{Advantages}:
 		\begin{itemize}
 			\item Excellent performance, fast data retrieval, optimal for slicing and dicing operations
-			\item Can perform complex calculations (pre-generated when the cube is created
+			\item Can perform complex calculations (pre-generated when the cube is created)
 		\end{itemize}
 		\item \uline{Disadvantages}:
 		\begin{itemize}
@@ -836,7 +836,7 @@ It is possible to identify three different measure categories:
 \end{figure}
 \subsubsection{Aggregate Operators}
 \begin{itemize}
-	\item \textbf{Distributive operator}: allows to aggregate data strating from partially aggregated data (e.g., sum, max, min)
+	\item \textbf{Distributive operator}: allows to aggregate data starting from partially aggregated data (e.g., sum, max, min)
 	\item \textbf{Algebraic operator}: requires further information to aggregate data (e.g., avg)
 	\item \textbf{Holistic operator}: it is not possible to obtain aggregate data starting from partially aggrega data (e.g., mode, median)
 \end{itemize}
@@ -902,7 +902,7 @@ In the \textbf{glossary}, an expression is associated with each measure. The exp
 \section{Big Data Architectures and Data Ethics}
 \subsection{NoSQL Databases}
 \subsubsection{Transactional Systems}
-ACID properties are a consistency model over data in transaction, that is common in traditional relational databases. They guarantee safe operations on data at anytime. \\
+ACID properties are a consistency model over data in transactions, that is common in traditional relational databases. They guarantee safe operations on data at anytime. \\
 The ACID acronym stands for:
 \begin{itemize}
 	\item \textbf{Atomicity}: a transaction is an indivisible unit of execution
@@ -918,17 +918,19 @@ Because ACID properties are not really required in certain domains,
 \subsubsection{Big Data and the Cloud}
 \textbf{Data Clouds}: \uline{on demand storage services}, reliable, offered on the internet with easy access to a virtually infinite number of storage resources, computing and network. \nline
 \uline{Classification of possible methods of storage}:
-- \textbf{Centralized or distributed}: transactional, based on a traditional model (e.g., relational), most widely used for traditional business applications
-- \textbf{Federated and multi-databases}: used for companies and organization that are associated and share their data on the Internet
-- \textbf{Cloud databases}: to support Big Data by means of load sharing and data partitioning (usually NoSQL)
+\begin{itemize}
+	\item \textbf{Centralized or distributed}: transactional, based on a traditional model (e.g., relational), most widely used for traditional business applications
+	\item \textbf{Federated and multi-databases}: used for companies and organization that are associated and share their data on the Internet
+	\item \textbf{Cloud databases}: to support Big Data by means of load sharing and data partitioning (usually NoSQL)
+\end{itemize}
 \subsubsection{NoSQL databases}
-It has been realized that is not always necessary that a system for data management guarantees all transactional characteristics. The non-transactional DBMS are commonly called NoSQL DBMS. This is really not correct because the fact that a system is relational (and uses the SQL language) and that it has a transactional characteristics are independent.
+It has been realized that is not always necessary that a system for data management guarantees all transactional characteristics. The non-transactional DBMS are commonly called NoSQL DBMS. This is really not correct because the fact that a system is relational (and uses the SQL language) and that it has a transactional characteristics are independent. \\
 NoSQL databases:
 \begin{itemize}
 	\item Provide \textbf{flexible schemas}
 	\item \textbf{The updates are performed asynchronously} (no explicit support for concurrency)
 	\item Potential inconsistencies in the data must be solved directly by users
-	\item \textbf{Scalability}: no goins, no 2PhaseCommit
+	\item \textbf{Scalability}: no joins, no 2PhaseCommit
 	\item Object-oriented friendly
 	\item Caching easier
 	\item Easily evolved to live replicas, made possible by the simplicity of re-partitioning of data
@@ -988,7 +990,7 @@ NoSQL main strengths are \textbf{scalability} and \textbf{flexibility}.
 		\begin{itemize}
 			\item Row: columns indexed within each row by a row-key
 			\item Column-family: a set of columns, normally similar in structure to optimize compaction
-			\item Columns in the same column family will be "close" (stored in the same bloc on disck)
+			\item Columns in the same column family will be "close" (stored in the same bloc on disk)
 			\item Columns: have a name and may contain a value for each row
 		\end{itemize}
 	\end{itemize}
@@ -1026,7 +1028,7 @@ A data management system shared over the network can guarantee at most two of th
 	\item \textbf{Consistency (C)}: all nodes see the same data at the same time
 	\item \textbf{Availability (A)}: every request receives a response on success or failure (regardless of the
 state of any individual node in the system)
-	\item Partition Tolerance (P): the system continues to operate despite the number of message about loss or failure of part of the system (i.e., network partitions)
+	\item \textbf{Partition Tolerance (P)}: the system continues to operate despite the number of message about loss or failure of part of the system (i.e., network partitions)
 \end{itemize}
 Note that all three properties are more "fuzzy" than binary. In particular there's a trade-off between Consistency and Availability. Increasing the support for one of them, will result in decreasing the support for the other. \\
 N.B. In ACID the C means that a transaction preserves all the database constraints; in CAP the C refers only to copy consistency, a strict subset of ACID consistency.
@@ -1068,7 +1070,7 @@ Data preparation is important because real-world data is often incomplete, incon
 \begin{figure}[htp]
 \centering
 \includegraphics[width=300pt]{images/data-quality-integration}\hfill
-\end{figure}
+\end{figure} \\
 \textbf{Data Quality} is the ability of a data collection to meet user requirements. 
 Causes of poor quality:
 \begin{itemize}
@@ -1164,7 +1166,7 @@ Similarity measures:
 \begin{itemize}
 	\item String-Based Distance Functions
 	\begin{itemize}
-		\item Edit-distance (minimum number of edits from one word to the other
+		\item Edit-distance (minimum number of edits from one word to the other)
 		\item Soundex (phonetical similarity measure)
 	\end{itemize}
 	\item Item-Based Distance Functions
@@ -1173,7 +1175,7 @@ Similarity measures:
 		\item Cosine similarity
 	\end{itemize}
 \end{itemize}
-In order to check the existence of duplicates we should compare all pairs of instances. \textbf{Too many comparisons} $\rightarrow$ ($n^2-n)/2$). \\
+In order to check the existence of duplicates we should compare all pairs of instances. \textbf{Too many comparisons} $\rightarrow$ ($n^2-n)/2$. \\
 \textbf{Partitioning} is the solution for this problem. Partition records through a selection and comparisons are performed among pairs of records inside the partition. \\ 
 Example: \uline{Sorted neighborhood}
 \begin{enumerate}
